@@ -39,7 +39,15 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="304dp"
 
         app:srcCompat="@drawable/goofy_confused" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:text="Button"
+        android:background="@drawable/myselector"
+        />
 </LinearLayout>
