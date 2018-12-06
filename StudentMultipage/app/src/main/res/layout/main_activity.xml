@@ -4,109 +4,115 @@
     android:layout_height="match_parent"
     android:layout_margin="25dp">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List of Students"
+        android:textAlignment="center"
+        android:textFontWeight="100"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Number 1" />
+            android:text="StudentID" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/studentID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
             android:inputType="textPersonName"
-            android:text="0"
-             />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Number 2" />
+            android:text="Name" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/studentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
             android:inputType="textPersonName"
-            android:text="0"
-             />
+            android:text="" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView5"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Operation"
-        android:layout_marginTop="25dp"
-        android:gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:id="@+id/radioGroup"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_gravity="center" >
-
-        <RadioButton
-            android:id="@+id/rbAdd"
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Age" />
 
+        <EditText
+            android:id="@+id/studentAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btAdd"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Add" />
 
-        <RadioButton
-            android:id="@+id/rbMultiply"
+        <Button
+            android:id="@+id/btRemove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Multiply" />
+            android:text="Remove" />
 
-        <RadioButton
-            android:id="@+id/rbDivide"
+        <Button
+            android:id="@+id/btClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Divide" />
+            android:text="Clear" />
 
-        <RadioButton
-            android:id="@+id/rbSubstract"
+        <Button
+            android:id="@+id/btShow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Substract" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/showBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show result"
-        android:onClick="operate"/>
-
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Finish"
-        android:onClick="close"/>
-
+            android:text="Show All" />
+    </LinearLayout>
 </LinearLayout>
