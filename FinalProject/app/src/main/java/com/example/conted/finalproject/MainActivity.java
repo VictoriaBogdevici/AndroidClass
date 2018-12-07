@@ -1,5 +1,6 @@
 package com.example.conted.finalproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     int operation, num1, num2;
     StringBuilder myStr = new StringBuilder();
+    ArrayList<Result> resultsList = new ArrayList<>();
 
 
     @Override
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btClear = findViewById(R.id.btClear);
         btClear.setOnClickListener(this);
+
+        btScore=findViewById(R.id.btScore);
+        btScore.setOnClickListener(this);
 
         bt1 = findViewById(R.id.bt1);
         bt1.setOnClickListener(numberButtonsListener);
@@ -119,11 +125,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void validate() {
+
         double userAnswerDouble = Double.valueOf(userAnswer.getText().toString());
         DecimalFormat decimalFormat = new DecimalFormat("##.##");
         decimalFormat.setRoundingMode(RoundingMode.FLOOR);
-        String formatedUserAnsdwer=decimalFormat.format(userAnswerDouble);
-        userAnswerDouble=Double.valueOf(formatedUserAnsdwer);
+        String formatedUserAnsdwer = decimalFormat.format(userAnswerDouble);
+        userAnswerDouble = Double.valueOf(formatedUserAnsdwer);
         System.out.println(userAnswerDouble);
 
         double result = 0;
@@ -138,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 2:
                 result = num1 / (double) num2;
 
-                String formatedResult=decimalFormat.format(result);
-                result=Double.valueOf(formatedResult);
+                String formatedResult = decimalFormat.format(result);
+                result = Double.valueOf(formatedResult);
                 System.out.println(result);
                 break;
             case 3:
@@ -149,17 +156,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+        Result currentResult = new Result(generatedText.getText().toString(), formatedUserAnsdwer, String.valueOf(result));
+
 
         if (userAnswerDouble == result) {
             output.setText("Right answer!");
+            currentResult.setRight(true);
 
         } else
-            output.setText("Wrong! Right answer is "+result);
-
-
+            output.setText("Wrong! Right answer is " + result);
+        resultsList.add(currentResult);
+        System.out.println(currentResult);
     }
 
     private void showScore() {
+
+        Intent intent= new Intent(this, Score.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("resultsList",resultsList);
+        intent.putExtra("myBundle",bundle);
+        startActivity(intent);
+
     }
 
     private void clear() {
