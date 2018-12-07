@@ -8,15 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     EditText userAnswer;
-    Button btValidate, btGenerate, btClear,btFinish,btScore,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btMinus,btDot;
-    TextView generatedText;
+    Button btValidate, btGenerate, btClear, btFinish, btScore, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, btMinus, btDot;
+    TextView generatedText, output;
 
-    int operation;
-    StringBuilder myStr= new StringBuilder();
+    int operation, num1, num2;
+    StringBuilder myStr = new StringBuilder();
 
 
     @Override
@@ -39,32 +41,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btClear = findViewById(R.id.btClear);
         btClear.setOnClickListener(this);
 
-        bt1=findViewById(R.id.bt1);
+        bt1 = findViewById(R.id.bt1);
         bt1.setOnClickListener(numberButtonsListener);
-        bt2=findViewById(R.id.bt2);
+        bt2 = findViewById(R.id.bt2);
         bt2.setOnClickListener(numberButtonsListener);
-        bt3=findViewById(R.id.bt3);
+        bt3 = findViewById(R.id.bt3);
         bt3.setOnClickListener(numberButtonsListener);
-        bt4=findViewById(R.id.bt4);
+        bt4 = findViewById(R.id.bt4);
         bt4.setOnClickListener(numberButtonsListener);
-        bt5=findViewById(R.id.bt5);
+        bt5 = findViewById(R.id.bt5);
         bt5.setOnClickListener(numberButtonsListener);
-        bt6=findViewById(R.id.bt6);
+        bt6 = findViewById(R.id.bt6);
         bt6.setOnClickListener(numberButtonsListener);
-        bt7=findViewById(R.id.bt7);
+        bt7 = findViewById(R.id.bt7);
         bt7.setOnClickListener(numberButtonsListener);
-        bt8=findViewById(R.id.bt8);
+        bt8 = findViewById(R.id.bt8);
         bt8.setOnClickListener(numberButtonsListener);
-        bt9=findViewById(R.id.bt9);
+        bt9 = findViewById(R.id.bt9);
         bt9.setOnClickListener(numberButtonsListener);
-        bt0=findViewById(R.id.bt0);
+        bt0 = findViewById(R.id.bt0);
         bt0.setOnClickListener(numberButtonsListener);
-        btMinus=findViewById(R.id.btMinus);
+        btMinus = findViewById(R.id.btMinus);
         btMinus.setOnClickListener(numberButtonsListener);
-        btDot=findViewById(R.id.btDot);
+        btDot = findViewById(R.id.btDot);
         btDot.setOnClickListener(numberButtonsListener);
 
         generatedText = findViewById(R.id.generatedText);
+        output = findViewById(R.id.output);
 
 
     }
@@ -73,19 +76,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View view) {
             btValidate.setEnabled(true);
-            int btId=view.getId();
-            Button clicked=findViewById(btId);
+            int btId = view.getId();
+            Button clicked = findViewById(btId);
 
             //check if "-" was pressed to put in in the front
-            if(btId==R.id.btMinus){
-                myStr.setCharAt(0,clicked.getText().toString().charAt(0));
-            }
-            else myStr.append(clicked.getText().toString());
+            if (btId == R.id.btMinus) {
+                if (myStr.indexOf("-") == -1)
+                    myStr.insert(0, "-");
+
+            } else if (btId == R.id.btDot) {
+                if (myStr.indexOf(".") == -1)
+                    myStr.append(".");
+            } else myStr.append(clicked.getText().toString());
             userAnswer.setText(myStr);
         }
     };
-
-
 
 
     // event handler for non numeric buttons
@@ -114,8 +119,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void validate() {
-        double userAnswerDouble= Double.valueOf(userAnswer.getText().toString());
+        double userAnswerDouble = Double.valueOf(userAnswer.getText().toString());
+        DecimalFormat decimalFormat = new DecimalFormat("##.##");
+        decimalFormat.setRoundingMode(RoundingMode.FLOOR);
+        String formatedUserAnsdwer=decimalFormat.format(userAnswerDouble);
+        userAnswerDouble=Double.valueOf(formatedUserAnsdwer);
         System.out.println(userAnswerDouble);
+
+        double result = 0;
+
+        switch (operation) {
+            case 0:
+                result = num1 + num2;
+                break;
+            case 1:
+                result = num1 - num2;
+                break;
+            case 2:
+                result = num1 / (double) num2;
+
+                String formatedResult=decimalFormat.format(result);
+                result=Double.valueOf(formatedResult);
+                System.out.println(result);
+                break;
+            case 3:
+                result = num1 * num2;
+                break;
+
+
+        }
+
+
+        if (userAnswerDouble == result) {
+            output.setText("Right answer!");
+
+        } else
+            output.setText("Wrong! Right answer is "+result);
 
 
     }
@@ -127,15 +166,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         generatedText.setText("");
         userAnswer.setText("");
         myStr.setLength(0);
+        output.setText("");
     }
 
     private void generate() {
 
+
+        //clear the display
+        userAnswer.setText("");
+        myStr.setLength(0);
+        output.setText("");
         //generate the numbers
         Random rnd = new Random();
-        int num1 = rnd.nextInt(10);
-        int num2 = rnd.nextInt(10);
-        System.out.println(num1 + " " + num2);
+        num1 = rnd.nextInt(10);
+        num2 = rnd.nextInt(10);
+
 
         //generate the operations
 
