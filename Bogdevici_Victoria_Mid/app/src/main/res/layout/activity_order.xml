@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="25dp">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer Name"
+        android:textSize="24sp"
+        android:background="#d3d9fa"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d3d9fa"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
+        android:text="Order"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go back to main activity"
+
+        android:layout_marginTop="45dp"/>
+</LinearLayout>

@@ -1,0 +1,133 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#d3d9fa"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Welcome:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="textPersonName"
+            android:hint="Please enter your name" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:text="Food activity App"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingLeft="35dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbPoutine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Poutine"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rbChefPoutine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chef Poutine" />
+
+            <RadioButton
+                android:id="@+id/rbSalmon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Salmon" />
+
+            <RadioButton
+                android:id="@+id/rbSushi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sushi" />
+
+            <RadioButton
+                android:id="@+id/rbTacos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tacos" />
+
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/imgFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/poutine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d3d9fa"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish"
+            android:layout_margin="10dp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Order"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</LinearLayout>
