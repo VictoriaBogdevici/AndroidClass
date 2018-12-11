@@ -12,7 +12,7 @@ public class Result implements Serializable {
     private String operation;
     private String userAnswer;
     private String rightAnswer;
-    String timestapm;
+    String time;
     private boolean isRight;
 
 
@@ -21,14 +21,14 @@ public class Result implements Serializable {
         this.setOperation(operation);
         this.setUserAnswer(userAnswer);
         this.setRightAnswer(rightAnswer);
-        this.timestapm=sdf.format(timestamp);
+        this.time=sdf.format(timestamp);
     }
 
     @Override
     public String toString() {
-       if(isRight) return String.format("%s - Right Answer\n %s=%s\n Answer submitted : %s",timestamp,operation,rightAnswer,userAnswer);
+       if(isRight) return String.format("%s - Right Answer\n %s=%s\n Answer submitted : %s",time,operation,rightAnswer,userAnswer);
        else
-           return String.format("%s - Wrong answer\n %s=%s\n Answer submitted : %s",timestamp,operation,rightAnswer,userAnswer);
+           return String.format("%s - Wrong answer\n %s=%s\n Answer submitted : %s",time,operation,rightAnswer,userAnswer);
     }
 
     public String getOperation() {
