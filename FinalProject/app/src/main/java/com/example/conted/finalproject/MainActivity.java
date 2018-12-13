@@ -17,7 +17,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     EditText userAnswer;
     Button btValidate, btGenerate, btClear, btFinish, btScore, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, btMinus, btDot;
-    TextView generatedText, output;
+    TextView generatedText, output,textViewMathQuizz;
 
     int operation, num1, num2;
     StringBuilder myStr = new StringBuilder();
@@ -74,6 +74,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         generatedText = findViewById(R.id.generatedText);
         output = findViewById(R.id.output);
+        textViewMathQuizz=findViewById(R.id.textViewMathQuizz);
+
+
+        Intent intent=getIntent();
+        String name=intent.getStringExtra("Name");
+        String score=intent.getStringExtra("Score");
+        if(name!= null && score!=null )
+        {
+
+            textViewMathQuizz.setText(name+" "+score);
+
+        }
+        else textViewMathQuizz.setText("Math Quizz");
 
 
     }

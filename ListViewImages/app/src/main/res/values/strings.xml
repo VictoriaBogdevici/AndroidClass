@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListViewImages</string>
+
+    <array name="listViewEntities">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+    </array>
+</resources>

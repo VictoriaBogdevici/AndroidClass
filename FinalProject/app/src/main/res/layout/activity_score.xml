@@ -85,13 +85,13 @@
             android:text="Register" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Enter yout name" />
+            android:hint="Enter your name" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,7 +117,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back"
