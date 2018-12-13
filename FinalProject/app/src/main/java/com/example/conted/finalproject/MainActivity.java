@@ -17,7 +17,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     EditText userAnswer;
     Button btValidate, btGenerate, btClear, btFinish, btScore, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, btMinus, btDot;
-    TextView generatedText, output,textViewMathQuizz;
+    TextView generatedText, output, textViewMathQuizz;
 
     int operation, num1, num2;
     StringBuilder myStr = new StringBuilder();
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btClear = findViewById(R.id.btClear);
         btClear.setOnClickListener(this);
 
-        btScore=findViewById(R.id.btScore);
+        btScore = findViewById(R.id.btScore);
         btScore.setOnClickListener(this);
 
         bt1 = findViewById(R.id.bt1);
@@ -74,23 +74,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         generatedText = findViewById(R.id.generatedText);
         output = findViewById(R.id.output);
-        textViewMathQuizz=findViewById(R.id.textViewMathQuizz);
+        textViewMathQuizz = findViewById(R.id.textViewMathQuizz);
 
 
-        Intent intent=getIntent();
-        String name=intent.getStringExtra("Name");
-        String score=intent.getStringExtra("Score");
-        if(name!= null && score!=null )
-        {
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("Name");
+        String score = intent.getStringExtra("Score");
+        if (name != null && score != null) {
 
-            textViewMathQuizz.setText(name+" "+score);
+            textViewMathQuizz.setText(name + " " + score);
 
-        }
-        else textViewMathQuizz.setText("Math Quizz");
+        } else textViewMathQuizz.setText("Math Quizz");
 
 
     }
 
+
+    //event handler for numeric buttons
     View.OnClickListener numberButtonsListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (btId == R.id.btMinus) {
                 if (myStr.indexOf("-") == -1)
                     myStr.insert(0, "-");
-
+                // Check if "." was pressed
             } else if (btId == R.id.btDot) {
                 if (myStr.indexOf(".") == -1)
                     myStr.append(".");
@@ -136,13 +136,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
+    //user input validation
     private void validate() {
 
+        //convert user input to double
         double userAnswerDouble = Double.valueOf(userAnswer.getText().toString());
         DecimalFormat decimalFormat = new DecimalFormat("##.##");
         decimalFormat.setRoundingMode(RoundingMode.FLOOR);
         String formatedUserAnsdwer = decimalFormat.format(userAnswerDouble);
+
         userAnswerDouble = Double.valueOf(formatedUserAnsdwer);
         System.out.println(userAnswerDouble);
 
@@ -169,9 +171,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+        // create a new object
         Result currentResult = new Result(generatedText.getText().toString(), formatedUserAnsdwer, String.valueOf(result));
 
-
+        //check if the answer was right
         if (userAnswerDouble == result) {
             output.setText("Right answer!");
             currentResult.setRight(true);
@@ -181,17 +184,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resultsList.add(currentResult);
         System.out.println(currentResult);
     }
-
+    // method to jump to the score activity
     private void showScore() {
 
-        Intent intent= new Intent(this, Score.class);
+        Intent intent = new Intent(this, Score.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("resultsList",resultsList);
-        intent.putExtra("myBundle",bundle);
+        bundle.putSerializable("resultsList", resultsList);
+        intent.putExtra("myBundle", bundle);
         startActivity(intent);
 
     }
-
+        //clear the screen
     private void clear() {
         generatedText.setText("");
         userAnswer.setText("");
@@ -199,13 +202,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         output.setText("");
     }
 
+
     private void generate() {
 
-
-        //clear the display
-        userAnswer.setText("");
-        myStr.setLength(0);
-        output.setText("");
+        //clear previous inputs
+        clear();
         //generate the numbers
         Random rnd = new Random();
         num1 = rnd.nextInt(10);
@@ -223,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 generatedText.setText(num1 + "-" + num2);
                 break;
             case 2:
+                // in case of diviosio, num2 is generated in range [1,9] so no division to 0
                 num2 = rnd.nextInt(9) + 1;
                 generatedText.setText(num1 + "/" + num2);
                 break;
